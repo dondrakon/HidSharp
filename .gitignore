@@ -1,0 +1,9 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs
+/bin
+/HidSharp.Test/obj/Debug
+/HidSharp/obj/Debug
+/HidSharp/.vs/HidSharp/v14
