@@ -129,6 +129,11 @@ namespace HidSharp.Platform.Linux
             return _serialNumber;
         }
 
+        public override string GetIndexedString(int stringIndex)
+        {
+            throw new NotImplementedException();
+        }
+
         public override int GetMaxInputReportLength()
         {
             RequiresGetInfo();

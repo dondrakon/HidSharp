@@ -169,6 +169,25 @@ namespace HidSharp.Platform.Windows
             return _serialNumber;
         }
 
+        public override string GetIndexedString(int stringIndex)
+        {
+            string indexedString = null;
+            if (!TryOpenToGetInfo(handle =>
+                {
+                    char[] buffer = new char[128];
+                    if (!NativeMethods.HidD_GetIndexedString(handle, stringIndex, buffer, Marshal.SystemDefaultCharSize * buffer.Length))
+                    {
+                        return Marshal.GetLastWin32Error() == NativeMethods.ERROR_GEN_FAILURE;
+                    }
+                    indexedString = NativeMethods.NTString(buffer);
+                    return true;
+                }))
+            {
+                throw DeviceException.CreateIOException(this, "Failed to get info.");
+            }
+            return indexedString;
+        }
+
         public override int GetMaxInputReportLength()
         {
             RequiresGetInfo(GetInfoFlags.ReportInfo);

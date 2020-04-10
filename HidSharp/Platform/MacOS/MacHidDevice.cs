@@ -160,6 +160,11 @@ namespace HidSharp.Platform.MacOS
             return _serialNumber;
         }
 
+        public override string GetIndexedString(int stringIndex)
+        {
+            throw new NotImplementedException();
+        }
+
         public override string GetFileSystemName()
         {
             throw new NotSupportedException();

@@ -64,6 +64,13 @@ namespace HidSharp
         public abstract string GetSerialNumber();
 
         /// <summary>
+        /// Returns a specified embedded string from a top-level collection
+        /// </summary>
+        /// <param name="stringIndex">Index of embedded string</param>
+        /// <returns></returns>
+        public abstract string GetIndexedString(int stringIndex);
+
+        /// <summary>
         /// Returns the maximum input report length, including the Report ID byte.
         /// If the device does not use Report IDs, the first byte will always be 0.
         /// </summary>
