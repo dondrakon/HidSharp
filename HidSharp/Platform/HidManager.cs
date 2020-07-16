@@ -150,6 +150,13 @@ namespace HidSharp.Platform
             return deviceListArray;
         }
 
+        public void ClearDeviceList(DeviceTypes types)
+        {
+            if (0 != (types & DeviceTypes.Hid)) { _hid.DeviceList.Clear(); }
+            if (0 != (types & DeviceTypes.Serial)) { _serial.DeviceList.Clear(); }
+            if (0 != (types & DeviceTypes.Ble)) { _ble.DeviceList.Clear(); }
+        }
+
         public IEnumerable<Device> GetDevices(DeviceTypes types)
         {
             var devices = Enumerable.Empty<Device>();

@@ -210,5 +210,22 @@ namespace HidSharp
             get;
             private set;
         }
+
+        /// <summary>
+        /// Refreshes cached device list of selected device types
+        /// </summary>
+        /// <param name="types">Types of devices that should be refreshed</param>
+        public void Refresh(DeviceTypes types)
+        {
+            Platform.HidSelector.Instance.ClearDeviceList(types);
+        }
+
+        /// <summary>
+        /// Refreshes cached device list
+        /// </summary>
+        public void Refresh()
+        {
+            Refresh(DeviceTypes.Hid | DeviceTypes.Serial | DeviceTypes.Ble);
+        }
     }
 }
